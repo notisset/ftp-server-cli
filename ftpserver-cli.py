@@ -19,7 +19,7 @@ def processCmdLineOptions():
   optparser.add_argument('-t', '--port', action='store', type=int,
       default="21", help="port")
   optparser.add_argument('-d', '--directory', action='store', type=str,
-      default="/home/stefano/Projekte/", help="port")
+      default="/home/user/Projects/", help="port")
   optargs = optparser.parse_args(sys.argv[1:]) #(sys.argv)
   return optargs
 
