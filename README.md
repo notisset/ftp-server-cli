@@ -10,6 +10,3 @@ by Stefano Palazzo (http://askubuntu.com/users/1067/stefano-palazzo)
 usage:
     
     sudo python ftpserver-cli.py --directory=/tmp/srvtest
-
-
-I did not pick a license as I am not yet aware of the original programmer's wills
