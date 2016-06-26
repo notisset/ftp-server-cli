@@ -1,7 +1,13 @@
 #!/usr/bin/env python
-# ftpserver-cli.py
+#title           :ftpserver-cli.py
+#description     :CLI ftp server.
+#author          :Stefano Palazzo
+#usage           :python ftpserver-cli.py --directory=/tmp/srvtest
+#python_version  :2.7.9
+#==============================================================================
+
 import sys
-sys.path.append("/path/to/pyftpdlib-svn") # enter your proper path here
+# sys.path.append("/path/to/pyftpdlib-svn") # enter your proper path here
 import argparse
 
 from pyftpdlib.authorizers import DummyAuthorizer
