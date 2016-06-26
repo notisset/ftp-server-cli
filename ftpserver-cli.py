@@ -19,6 +19,8 @@ def processCmdLineOptions():
     global optparser
     optparser = argparse.ArgumentParser(description="ftpserver-cli",
                                         formatter_class=argparse.RawDescriptionHelpFormatter)
+    optparser.add_argument('-v', '--verbose', dest='verbose', action='store_true')
+    optparser.set_defaults(verbose=False)
     optparser.add_argument('-u', '--username', action='store', type=str,
                            default="user", help="username")
     optparser.add_argument('-p', '--password', action='store', type=str,
@@ -33,8 +35,10 @@ def processCmdLineOptions():
 
 optargs = processCmdLineOptions()
 
-print(
-    "Using: user: %s pass: %s port: %d dir: %s" % (optargs.username, optargs.password, optargs.port, optargs.directory))
+if optargs.verbose:
+    print(
+        "Using: user: %s pass: %s port: %d dir: %s" % (
+        optargs.username, optargs.password, optargs.port, optargs.directory))
 
 authorizer = DummyAuthorizer()
 authorizer.add_user(optargs.username, optargs.password, optargs.directory, perm="elradfmw")
