@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # title           :ftpserver-cli.py
 # description     :CLI ftp server.
-# author          :Stefano Palazzo
-# usage           :python ftpserver-cli.py --directory=/tmp/srvtest
+# author          :Stefano Palazzo, Valerio Riggi
+# usage           :./ftpserver-cli.py --d=/path/to/dir
 # python_version  :2.7.9
 # ==============================================================================
 
 import sys
+import os
 # sys.path.append("/path/to/pyftpdlib-svn") # enter your proper path here
 import argparse
 
@@ -28,12 +29,17 @@ def processCmdLineOptions():
     optparser.add_argument('-t', '--port', action='store', type=int,
                            default="21", help="port")
     optparser.add_argument('-d', '--directory', action='store', type=str,
-                           default="/home/user/Projects/", help="port")
+                           default=False, help="port")
     optargs = optparser.parse_args(sys.argv[1:])  # (sys.argv)
     return optargs
 
 
 optargs = processCmdLineOptions()
+
+if not optargs.directory:
+    sys.exit("You must specify a directory with -d")
+if not os.path.isdir(optargs.directory):
+    sys.exit("Directory %s not found. Please specify a different directory with -d" % optargs.directory)
 
 if optargs.verbose:
     print(
